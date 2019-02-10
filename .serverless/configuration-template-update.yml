@@ -1,0 +1,16 @@
+resources:
+  - type: storage.v1.bucket
+    name: sls-func-helloworld-dev-1549821875190
+  - type: cloudfunctions.v1beta2.function
+    name: func-helloworld-dev-hello-world-function
+    properties:
+      location: europe-west1
+      availableMemoryMb: 256
+      runtime: go111
+      timeout: 60s
+      function: HelloHTTP
+      sourceArchiveUrl: >-
+        gs://sls-func-helloworld-dev-1549821875190/serverless/func-helloworld/dev/1549821877822-2019-02-10T18:04:37.822Z/func-helloworld.zip
+      labels: {}
+      httpsTrigger:
+        url: path

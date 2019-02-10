@@ -1,0 +1,3 @@
+resources:
+  - type: storage.v1.bucket
+    name: sls-func-helloworld-dev-1549821875190
