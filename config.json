@@ -1,0 +1,12 @@
+{
+  "secretToken" : "googlefuncTest",
+  "stageBucket" : "davnan-func-github",
+  "location" : "europe-west1-b",
+  "deployments": [
+    {
+      "repository":"davidenanni/googlecloudfunctions",
+      "path":"./hello-world-function.go",
+      "functionName":"HelloHTTP"
+    }
+  ]
+}
