@@ -8,6 +8,7 @@ import (
         "net/http"
 )
 
+// Change1
 // HelloHTTP is an HTTP Cloud Function with a request parameter.
 func HelloHTTP(w http.ResponseWriter, r *http.Request) {
         var d struct {

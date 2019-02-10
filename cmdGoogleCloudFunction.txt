@@ -1,0 +1,1 @@
+gcloud beta functions deploy HelloHTTP --runtime go111 --stage-bucket davnan-func-github --trigger-http --region europe-west1
