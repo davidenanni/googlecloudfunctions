@@ -1,7 +1,7 @@
 {
   "secretToken" : "googlefuncTest",
   "stageBucket" : "davnan-func-github",
-  "location" : "europe-west1-b",
+  "location" : "europe-west1",
   "deployments": [
     {
       "repository":"davidenanni/googlecloudfunctions",
