@@ -5,7 +5,7 @@
   "deployments": [
     {
       "repository":"davidenanni/googlecloudfunctions",
-      "path":"hello-world-function",
+      "path":"/hello-world-function",
       "functionName":"HelloHTTP"
     }
   ]
