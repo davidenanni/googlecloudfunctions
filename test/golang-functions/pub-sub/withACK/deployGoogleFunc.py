@@ -10,6 +10,20 @@ def createGoMod( package ):
 	os.system("go build")
 
 
+def setupTriggerEvent( type, params ):
+	trigger = ""
+
+	if ( type.find("[TRIGGER]-PUBSUB") != -1 ):
+		trigger = "--trigger-topic "+params[0]
+
+	if ( type.find("[TRIGGER]-STORAGE") != -1 ):	
+		trigger = ("--trigger-resource "+params[0]+
+				   " --trigger-event "+params[1])
+
+	return trigger
+
+
+
 def deployGoogleFunction():
 	values = readCSV( funcParams )
 
@@ -19,10 +33,9 @@ def deployGoogleFunction():
 	memory		= values[3]
 	region		= values[4]
 
-	trigger = values[6]
+	trigger     = setupTriggerEvent(values[5], values[6:])
 
-	if trigger.find("--trigger-topic")!=-1:
-		trigger = trigger+" "+values[7]
+	
 
 	depIns = ("gcloud functions deploy "+funcName+" --entry-point "+funcSource+
 			  " --runtime "+runtime+" --memory "+memory+" --region "+region+" "+
