@@ -1,0 +1,4 @@
+1)  gcloud beta functions deploy HelloHTTP --runtime go111 --trigger-http --region asia-northeast1
+
+
+2)  gcloud beta functions deploy helloGCSGeneric --runtime nodejs6 --trigger-resource davnan-nginx-conf --trigger-event google.storage.object.finalize --region us-east1
