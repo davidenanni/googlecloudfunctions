@@ -35,7 +35,6 @@ def deployGoogleFunction():
 
 	trigger     = setupTriggerEvent(values[5], values[6:])
 
-	
 
 	depIns = ("gcloud functions deploy "+funcName+" --entry-point "+funcSource+
 			  " --runtime "+runtime+" --memory "+memory+" --region "+region+" "+
