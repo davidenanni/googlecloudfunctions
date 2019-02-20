@@ -50,7 +50,7 @@ func MakeRequest( numLaunch string )(float64, float64) {
 
     http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-    resp, err := http.Post("https://34.76.109.156:443", "application/json", bytes.NewBuffer(bytesRepresentation))
+    resp, err := http.Post("https://34.76.90.247:443", "application/json", bytes.NewBuffer(bytesRepresentation))
     if err != nil {
         log.Fatalln(err)
     }

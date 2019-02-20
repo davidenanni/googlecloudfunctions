@@ -1,0 +1,8 @@
+funcGCP,"FuncStorage-03"
+funcSource,"hello_get"
+runtime,"python37"
+memory,"1024"
+region,"europe-west1"
+###############,"[TRIGGER]-HTTP"
+bucket,"davnan-storage-buck"
+event,"google.storage.object.finalize"

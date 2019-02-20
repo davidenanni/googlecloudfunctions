@@ -50,7 +50,7 @@ func MakeRequest( numLaunch string )(float64, float64) {
 
     http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-    resp, err := http.Post("https://europe-west1-tesidaviden.cloudfunctions.net/FuncStorage-04", "application/json", bytes.NewBuffer(bytesRepresentation))
+    resp, err := http.Post("https://europe-west1-tesidaviden.cloudfunctions.net/FuncStorage-06", "application/json", bytes.NewBuffer(bytesRepresentation))
     if err != nil {
         log.Fatalln(err)
     }

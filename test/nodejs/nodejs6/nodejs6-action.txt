@@ -1,0 +1,7 @@
+npm install --production
+
+zip -rp helloworld.zip index.js ./node_modules/ package.json
+
+wsk action create helloworld --kind nodejs:6 helloworld.zip -i
+
+wsk action invoke helloworld -r --blocking --param name Davide -i
