@@ -1,4 +1,5 @@
 import os
+import sys
 import csv 
 from macro import readCSV
 
@@ -24,8 +25,8 @@ def setupTriggerEvent( type, params ):
 
 
 def deployGoogleFunction( gofunc ):
-	funcParams += gofunc + ".csv"
-	values = readCSV( funcParams )
+	funcParamsFile = (funcParams + "" + gofunc + ".csv")
+	values = readCSV( funcParamsFile )
 
 	funcName 	= values[0]
 	funcSource  = values[1]
@@ -43,8 +44,8 @@ def deployGoogleFunction( gofunc ):
 	os.system( depIns )
 
 
-gomod = os.Args[1]
-gofunc = os.Args[2]
+gomod = sys.argv[1]
+gofunc = sys.argv[2]
 
 createGoMod(gomod)
 deployGoogleFunction(gofunc)
