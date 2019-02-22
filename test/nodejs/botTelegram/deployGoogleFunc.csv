@@ -1,0 +1,8 @@
+funcGCP,"helloBot"
+funcSource,"helloBot"
+runtime,"nodejs8"
+memory,"1024"
+region,"europe-west1"
+###############,"[TRIGGER]-HTTP"
+bucket,"davnan-storage-buck"
+event,"google.storage.object.finalize"

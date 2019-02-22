@@ -1,0 +1,16 @@
+FISSION (https://blog.francium.tech/serverless-on-kubernetes-using-fission-80970c9833ee)
+
+
+GOLANG FISSION (https://docs.fission.io/languages/go/)
+
+	(1)	fission environment create --name go --image fission/go-env --builder fission/go-builder
+
+	(2)	fission fn create --name helloworld --env go --src hw.go --entrypoint Handler
+
+	(3) fission pkg info --name <pkg-name>
+
+OPT	(4) fission fn test --name <function-name>
+
+	(5) fission httptrigger create --method GET --url "/<url>" --function <fn-namne>
+
+	(6) curl -X POST(GET) http://$FISSION_ROUTER/<url> -d
