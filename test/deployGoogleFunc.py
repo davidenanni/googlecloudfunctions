@@ -37,12 +37,13 @@ def deployGoogleFunction( runtime, gofunc ):
 	runtime		= values[2]
 	memory		= values[3]
 	region		= values[4]
+	timeout		= values[5]
 
-	trigger     = setupTriggerEvent(values[5], values[6:])
+	trigger     = setupTriggerEvent(values[6], values[7:])
 
 
 	depIns = ("cd "+ runtimePath+" && gcloud functions deploy "+funcName+" --entry-point "+funcSource+
-			  " --runtime "+runtime+" --memory "+memory+" --region "+region+" "+
+			  " --runtime "+runtime+" --memory "+memory+" --region "+region+" --timeout "+timeout+" "+
 			  trigger)
 
 	os.system( depIns )
