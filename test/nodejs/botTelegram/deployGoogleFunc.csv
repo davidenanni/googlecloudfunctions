@@ -1,5 +1,5 @@
-funcGCP,"helloBot"
-funcSource,"helloBot"
+funcGCP,"function-bot"
+funcSource,"bmi"
 runtime,"nodejs8"
 memory,"1024"
 region,"europe-west1"

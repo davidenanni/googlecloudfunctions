@@ -1,8 +1,0 @@
-funcGCP,"FuncStorage-01"
-funcSource,"HelloGCSInfo"
-runtime,"go111"
-memory,"1024"
-region,"europe-west1"
-###############,"[TRIGGER]-STORAGE"
-bucket,"davnan-storage-buck"
-event,"google.storage.object.finalize"

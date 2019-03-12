@@ -15,30 +15,35 @@ import (
 
 func main() {
 
-    file, err := os.Create("res.csv")
+    workload := os.Args[1]
+    numTest, _ := strconv.ParseInt(os.Args[2], 10, 64)
+    cloudFunc := os.Args[3]
+
+
+    file, err := os.Create("res-"+workload+".csv")
     if err != nil {
         return
     }
     defer file.Close()
 
-    numLaunch := os.Args[1]
-    numTest, _ := strconv.ParseInt(os.Args[2], 10, 64)
+    
+    
 
     var i int64
 
     for i=0; i<numTest; i++{
 
-        latency, exeTime := MakeRequest(numLaunch)        
+        latency, exeTime := MakeRequest(workload, cloudFunc)        
 
         file.WriteString(fmt.Sprintf("%f",latency)+","+fmt.Sprintf("%f",exeTime)+"\n")
     }
 }
 
 
-func MakeRequest( numLaunch string )(float64, float64) {
+func MakeRequest( workload, cloudFunc string )(float64, float64) {
 
     message := map[string]interface{}{
-        "numb": numLaunch}
+        "numb": workload}
 
     bytesRepresentation, err := json.Marshal(message)
     if err != nil {
@@ -50,7 +55,7 @@ func MakeRequest( numLaunch string )(float64, float64) {
 
     http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-    resp, err := http.Post("http://34.76.65.164/montecarlo", "application/json", bytes.NewBuffer(bytesRepresentation))
+    resp, err := http.Post("http://"+cloudFunc, "application/json", bytes.NewBuffer(bytesRepresentation))
     if err != nil {
         log.Fatalln(err)
     }
@@ -62,8 +67,7 @@ func MakeRequest( numLaunch string )(float64, float64) {
     defer resp.Body.Close()
 
     var r struct {
-        Result       string
-        ExecutionTime string
+        ElapsedmsTime string
     }
 
 
@@ -75,7 +79,7 @@ func MakeRequest( numLaunch string )(float64, float64) {
         
     }
 
-    exeTime_ms, _ := strconv.ParseFloat(r.ExecutionTime, 32)
+    exeTime_ms, _ := strconv.ParseFloat(r.ElapsedmsTime, 32)
 
     return latency_ms, exeTime_ms
 

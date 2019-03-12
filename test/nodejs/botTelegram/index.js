@@ -2,7 +2,8 @@ const request = require('request').defaults({
     encoding: null
   });
 
-let url = "https://api.telegram.org/token/sendMessage?chat_id=chat_id&text=$message";
+
+let url = "https://api.telegram.org/bot779199701:AAEuqK6B4YxM-uKPZzSU5x6QYVIPZP9xbRA/sendMessage?chat_id=404486906&text=$message";
 /**
  * Responds to any HTTP request that can provide a "message" field in the body.
  *
@@ -43,7 +44,8 @@ exports.bmi = (req, res) => {
 };
 
 function sendMessage(message) {
-  let newUrl = url.replace("$message", message)
+  let newUrl = url.replace("$message", "\""+message+"\"")
+  console.log(newUrl)
   request.get(newUrl, (error, response, body) => {
       let json = JSON.parse(body);
       console.log(json);

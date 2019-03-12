@@ -1,0 +1,8 @@
+funcGCP,"bubblesort"
+funcSource,"bubblesort"
+runtime,"python37"
+memory,"256"
+region,"europe-west1"
+###############,"[TRIGGER]-HTTP"
+bucket,"davnan-storage-buck"
+event,"google.storage.object.finalize"

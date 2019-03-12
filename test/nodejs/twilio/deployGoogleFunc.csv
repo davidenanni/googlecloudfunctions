@@ -1,0 +1,8 @@
+funcGCP,"function-twilio"
+funcSource,"reply"
+runtime,"nodejs8"
+memory,"128"
+region,"europe-west1"
+###############,"[TRIGGER]-HTTP"
+bucket,"davnan-storage-buck"
+event,"google.storage.object.finalize"

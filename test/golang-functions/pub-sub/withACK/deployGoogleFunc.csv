@@ -1,7 +1,0 @@
-funcGCP,"Func1"
-funcSource,"HelloPubSub"
-runtime,"go111"
-memory,"1024"
-region,"europe-west1"
-###############,"[TRIGGER]-PUBSUB"
-topic,"exampleTopic"

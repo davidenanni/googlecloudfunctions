@@ -1,0 +1,1 @@
+https://api.telegram.org/bot779199701:AAEuqK6B4YxM-uKPZzSU5x6QYVIPZP9xbRA/setWebhook?url=https://europe-west1-tesidaviden.cloudfunctions.net/function-bot
