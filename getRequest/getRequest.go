@@ -55,7 +55,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
 
     http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-    resp, err := http.Post("http://"+cloudFunc, "application/json", bytes.NewBuffer(bytesRepresentation))
+    resp, err := http.Post(cloudFunc, "application/json", bytes.NewBuffer(bytesRepresentation))
     if err != nil {
         log.Fatalln(err)
     }
@@ -67,7 +67,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
     defer resp.Body.Close()
 
     var r struct {
-        ElapsedmsTime string
+        ExecutionTime string
     }
 
 
@@ -79,7 +79,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
         
     }
 
-    exeTime_ms, _ := strconv.ParseFloat(r.ElapsedmsTime, 32)
+    exeTime_ms, _ := strconv.ParseFloat(r.ExecutionTime, 32)
 
     return latency_ms, exeTime_ms
 

@@ -14,7 +14,6 @@ import (
 
 
 type Resp struct {
-  Result       string
   ExecutionTime string
 }
 
@@ -34,13 +33,13 @@ func Montecarlo(w http.ResponseWriter, req *http.Request) {
                 return
         }
 
-        rand.Seed(time.Now().UnixNano())
-        
-        timestamp := time.Now()
 
         numTotLanci, _ := strconv.ParseInt(d.NumbLanci, 10, 64)
         numLanciArea := 0
         var i int64
+
+        rand.Seed(time.Now().UnixNano())
+        timestamp := time.Now()
 
         for i=0; i<numTotLanci; i++{
 
@@ -56,13 +55,12 @@ func Montecarlo(w http.ResponseWriter, req *http.Request) {
 
         executionTime := timestampCompleted.Sub(timestamp)
 
-        executionTime_ms := float64(executionTime/time.Millisecond)
+        executionTime_ms := float64(executionTime/time.Microsecond)/1000
 
-        s := fmt.Sprintf("%f",float64(numLanciArea)/float64(numTotLanci))
         exeTime := fmt.Sprintf("%f",executionTime_ms)
 
 
-        profile := Resp{s,exeTime}
+        profile := Resp{exeTime}
 
         js, err := json.Marshal(profile)
         if err != nil {
@@ -84,14 +82,3 @@ func main() {
         log.Fatal("ListenAndServe: ", err)
     }
 }
-
-/*
-func HelloServer(w http.ResponseWriter, req *http.Request){
-
-	message := req.URL.Path
-	message = strings.TrimPrefix(message, "/")
-	message = "[GCP] Hello "+message
-
-	w.Header().Set("Content-Type", "text/plain")
-	w.Write([]byte(message))
-}*/
