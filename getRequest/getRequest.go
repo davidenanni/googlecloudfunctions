@@ -67,7 +67,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
     defer resp.Body.Close()
 
     var r struct {
-        ExecutionTime string
+        ElapsedmsTime string
     }
 
 
@@ -79,7 +79,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
         
     }
 
-    exeTime_ms, _ := strconv.ParseFloat(r.ExecutionTime, 32)
+    exeTime_ms, _ := strconv.ParseFloat(r.ElapsedmsTime, 32)
 
     return latency_ms, exeTime_ms
 
