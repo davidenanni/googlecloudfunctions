@@ -27,7 +27,7 @@ def setupTriggerEvent( type, params ):
 
 def deployGoogleFunction( runtime, gofunc, provider ):
 
-	runtimePath = ("./"+ runtime +"/"+ provider +"/"+ gofunc)
+	runtimePath = ("./"+ runtime +"/"+ gofunc)
 
 	funcParamsFile = (runtimePath + "/deployGoogleFunc.csv")
 	values = readCSV( funcParamsFile )
