@@ -1,5 +1,5 @@
 // Package helloworld provides a set of Cloud Function samples.
-package helloworld
+package main
 
 import (
         "encoding/json"

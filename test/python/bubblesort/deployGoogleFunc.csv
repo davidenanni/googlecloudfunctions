@@ -1,7 +1,7 @@
 funcGCP,"bubblesort"
 funcSource,"bubblesort"
 runtime,"python37"
-memory,"2048"
+memory,"256"
 region,"europe-west1"
 timeout,"300"
 ###############,"[TRIGGER]-HTTP"

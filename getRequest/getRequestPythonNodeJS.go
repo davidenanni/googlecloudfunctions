@@ -15,10 +15,9 @@ import (
 
 func main() {
 
-    workload := os.Args[1]
+    cloudFunc := os.Args[1]
     numTest, _ := strconv.ParseInt(os.Args[2], 10, 64)
-    cloudFunc := os.Args[3]
-
+    workload := os.Args[3]
 
     file, err := os.Create("res-"+workload+".csv")
     if err != nil {
@@ -73,7 +72,11 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
         //bodyString := string(bodyBytes)
         //log.Println(bodyString)
         bodyString := string(bodyBytes)
-        exeTime_ms, _ = strconv.ParseFloat(bodyString, 64)
+    
+        exeTime_ms, err = strconv.ParseFloat(bodyString, 64)
+        if err != nil{
+            log.Fatalln(err)
+        }
     }
 
     return latency_ms, exeTime_ms
