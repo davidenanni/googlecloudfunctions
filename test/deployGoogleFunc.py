@@ -4,7 +4,8 @@ import csv
 from macro import readCSV
 
 
-def createGoMod( package ):
+def createGoMod( runtimePath, package ):
+	os.system("cd "+ runtimePath)
 	os.system("go mod init "+package)
 	os.system("go build")
 
@@ -25,9 +26,12 @@ def setupTriggerEvent( type, params ):
 	return trigger
 
 
-def deployGoogleFunction( runtime, gofunc, provider ):
+def deployGoogleFunction( runtime, func, gomodPackage ):
 
-	runtimePath = ("./"+ runtime +"/"+ gofunc)
+	runtimePath = ("./"+ runtime +"/"+ func)
+
+	if (runtime.find("golang") != -1):
+		createGoMod(runtimePath, gomodPackage)
 
 	funcParamsFile = (runtimePath + "/deployGoogleFunc.csv")
 	values = readCSV( funcParamsFile )
@@ -55,7 +59,6 @@ func = sys.argv[2]
 provider = sys.argv[3]
 
 if (runtime.find("golang") != -1):
-	gomod = sys.argv[4]
-	createGoMod(gomod)
+	gomodPackage = sys.argv[4]
 
-deployGoogleFunction(runtime,func,provider)
+deployGoogleFunction(runtime,func,gomodPackage)

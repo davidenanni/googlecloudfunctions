@@ -1,5 +1,5 @@
 // Package helloworld provides a set of Cloud Function samples.
-package main
+package sortalg
 
 import (
         "encoding/json"
