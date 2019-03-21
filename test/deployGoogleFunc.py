@@ -26,12 +26,9 @@ def setupTriggerEvent( type, params ):
 	return trigger
 
 
-def deployGoogleFunction( runtime, func, gomodPackage ):
+def deployGoogleFunction( runtime, func):
 
 	runtimePath = ("./"+ runtime +"/"+ func)
-
-	if (runtime.find("golang") != -1):
-		createGoMod(runtimePath, gomodPackage)
 
 	funcParamsFile = (runtimePath + "/deployGoogleFunc.csv")
 	values = readCSV( funcParamsFile )
@@ -61,4 +58,8 @@ provider = sys.argv[3]
 if (runtime.find("golang") != -1):
 	gomodPackage = sys.argv[4]
 
-deployGoogleFunction(runtime,func,gomodPackage)
+	runtimePath = ("./"+ runtime +"/"+ func)
+
+	createGoMod(runtimePath, gomodPackage)
+
+deployGoogleFunction(runtime,func)

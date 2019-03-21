@@ -25,9 +25,6 @@ func main() {
     }
     defer file.Close()
 
-    
-    
-
     var i int64
 
     for i=0; i<numTest; i++{
@@ -66,6 +63,7 @@ func MakeRequest( workload, cloudFunc string )(float64, float64) {
     defer resp.Body.Close()
 
     exeTime_ms := 0.0
+
 
     if resp.StatusCode == http.StatusOK {
         bodyBytes, _ := ioutil.ReadAll(resp.Body)
