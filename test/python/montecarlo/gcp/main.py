@@ -2,7 +2,7 @@ from random import random
 import time
 import json
 
-def montecarlo(event, context):
+def montecarlo(event):
 	
 	reqBody = event['body']
 	reqBodyJSON = json.loads(reqBody)
