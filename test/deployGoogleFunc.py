@@ -4,8 +4,7 @@ import csv
 from macro import readCSV
 
 
-def createGoMod( runtimePath, package ):
-	os.system("cd "+ runtimePath)
+def createGoMod( package ):
 	os.system("go mod init "+package)
 	os.system("go build")
 
@@ -53,13 +52,11 @@ def deployGoogleFunction( runtime, func):
 
 runtime = sys.argv[1]
 func = sys.argv[2]
-provider = sys.argv[3]
+#provider = sys.argv[3]
 
 if (runtime.find("golang") != -1):
-	gomodPackage = sys.argv[4]
+	gomodPackage = sys.argv[3]
 
-	runtimePath = ("./"+ runtime +"/"+ func)
-
-	createGoMod(runtimePath, gomodPackage)
+	createGoMod(gomodPackage)
 
 deployGoogleFunction(runtime,func)

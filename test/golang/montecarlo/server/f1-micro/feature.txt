@@ -1,2 +1,0 @@
-1vpc Intel Sandy Bridge
-0.6GB memory
