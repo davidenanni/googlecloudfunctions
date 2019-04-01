@@ -6,13 +6,17 @@ import(
 		"strconv"
 		"math"
 		"os"
+		"time"
 		_"bufio"
 )
 
-func montecarlo(numLanci int64)(float64){
+func montecarlo(numLanci int64)(float64,float64){
 	numLanciArea := 0
 
 	var i int64
+
+    rand.Seed(time.Now().UnixNano())
+    timestamp := time.Now()
 
     for i=0; i<numLanci; i++{
 
@@ -24,16 +28,38 @@ func montecarlo(numLanci int64)(float64){
         }
     }
 
-    return float64(numLanciArea)/float64(numLanci)
+    timestampCompleted := time.Now()
+
+    executionTime := timestampCompleted.Sub(timestamp)
+
+    executionTime_ms := float64(executionTime/time.Microsecond)/1000
+
+    estimated_pi := float64(numLanciArea)/float64(numLanci)*4
+
+    return estimated_pi,executionTime_ms
 }
 
 func main(){
 
 	numTest, _ := strconv.ParseInt(os.Args[1], 10, 64)
 
-	pigreco_sim := montecarlo(numTest)*4
+	workload, _ := strconv.ParseInt(os.Args[2], 10, 64)
 
-	fmt.Println(pigreco_sim)
+
+    file, err := os.Create("res-"+os.Args[2]+".csv")
+    if err != nil {
+        return
+    }
+    defer file.Close()
+
+	var i int64
+
+	for i=0; i<numTest; i++{
+
+		pigreco_sim,timeExec := montecarlo(workload)	
+
+		file.WriteString(fmt.Sprintf("%f",pigreco_sim)+","+fmt.Sprintf("%f",timeExec)+"\n")	
+	}
 }
 	//
 	//maxTest, _ := strconv.ParseInt(os.Args[2], 10, 64)	

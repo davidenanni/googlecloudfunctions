@@ -1,7 +1,7 @@
 import random
 import datetime    
 
-workload = 100000
+workload = 50
 numGoals = 0
 
 t1 = datetime.datetime.now()
@@ -18,4 +18,4 @@ t3 = t2 - t1
 elapsed_ms = (t3.seconds * 1000) + (t3.microseconds / 1000)
 
 print(elapsed_ms)
-print(numGoals/workload)
+print(numGoals/workload*4)
